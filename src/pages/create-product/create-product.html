@@ -1,0 +1,44 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>createProduct</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <button ion-button full (click)="pickImages()">Ajouter Images</button>
+<ion-list>
+  <ion-item>
+    <ion-label>Nom</ion-label>
+    <ion-input type="text" [(ngModel)]="myProduct.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Description</ion-label>
+    <ion-input type="text" [(ngModel)]="myProduct.desc"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Prix</ion-label>
+    <ion-input type="text" [(ngModel)]="myProduct.price"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Catégorie du produit </ion-label>
+      <ion-select [(ngModel)]="myProduct.categorie" >
+        <ion-option [value]="cat.title" *ngFor="let cat of categories" >{{cat.title}}</ion-option>
+      </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Mode d'acquisition </ion-label>
+      <ion-select [(ngModel)]="myProduct.availability.type" >
+        <ion-option value="Livraison" >Livraison</ion-option>
+        <ion-option value="Disponible en Magasin" >Disponible en Magasin</ion-option>
+        <ion-option value="Main en Main" >Main en Main</ion-option>
+      </ion-select>
+  </ion-item>
+
+  <button ion-button block (click)="create(myProduct)">Créer</button>
+</ion-list>
+</ion-content>

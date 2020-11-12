@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color=primary>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Vétements</ion-title>
+    <br>
+    <br>
+    <br>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-list>
+ <button ion-item (click)="showDetails(article)" *ngFor="let article of articles"  >
+    <ion-thumbnail item-start>
+      <img [src]="article.pictures[0]" #picture (click)="showImage(picture,$event)"> <!-- 'imageViewer' permettant de fusionner l'image-->
+
+    </ion-thumbnail>
+    
+<h2>{{article.title}}</h2>
+
+<h3>{{article.description}}</h3>
+<p>{{article.availability.available}}</p>
+<p><span *ngIf="article.averageStar >=1">
+  <ion-icon class="iconYellow" name="star"></ion-icon>
+  </span>
+  <span *ngIf="article.averageStar >=2">
+    <ion-icon class="iconYellow" name="star"></ion-icon>
+    </span>
+    <span *ngIf="article.averageStar >=3">
+      <ion-icon class="iconYellow" name="star"></ion-icon>
+      </span>
+      <span *ngIf="article.averageStar >=4">
+        <ion-icon class="iconYellow" name="star"></ion-icon>
+        </span>
+        <span *ngIf="article.averageStar >=5">
+          <ion-icon class="iconYellow" name="star"></ion-icon>
+          </span>
+  </p>
+
+ </button>
+</ion-list>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col offset-1 col-10>
+      <button (click)="showCreatePage()" ion-button round large>
+     
+         <ion-icon name="camera">&nbsp;
+            Vendre vos biens
+         </ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
